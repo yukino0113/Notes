@@ -37,16 +37,16 @@ var people = {
     }
 }
 
-var cup: {
+var cup = {
     name: "cup",
-    thinginside: null,
-    fillIn: function(thing) {
-        this.thingInside = thing
+    thinginside: 123,
+    fillIn: function(thing){ 
+        this.thingInside = thing; 
     }
 }
 
 var water = {
-    name: "water";
+    name: "water"
 }
 
 cup.fillIn(water);
@@ -76,16 +76,16 @@ console.log(people.pickUp(cup) + people.drink(cup))
 ```Javascript
 var a = {
   attribute: "something", // 靜態屬性
-  func_name = function(){ // 方法屬性
+  func_name: function(){ // 方法屬性
 	  //function code
-  };
+  }
 }
 ```
 
 ```Javascript
 object = {}; // JS 允許使用者創造空物件，之後再加入屬性
 object.attributeName = "Something"; // 加入靜態屬性
-object.functionName = function{ // 加入方法屬性
+object.functionName = function(){ // 加入方法屬性
 	// function code
 };
 ```
