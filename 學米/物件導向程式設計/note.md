@@ -37,7 +37,7 @@ var people = {
     }
 }
 
-var cup = {
+var cup: {
     name: "cup",
     thinginside: null,
     fillIn: function(thing) {
@@ -70,8 +70,44 @@ console.log(people.pickUp(cup) + people.drink(cup))
 
 
 # 2. Object & constructor (建構函數)
-### 
+## 2.1 建構方式
 
+- ### 匿名物件 (近似 Python 的 lambda function)
+```Javascript
+var a = {
+  attribute: "something"; // 靜態屬性
+  func_name = function(){ // 方法屬性
+	  //function code
+  };
+}
+```
+
+```Javascript
+object = {}; // JS 允許使用者創造空物件，之後再加入屬性
+object.attributeName = "Something"; // 加入靜態屬性
+object.functionName = function{ // 加入方法屬性
+	// function code
+};
+```
+### 具有名字的物件
+#### Constructor
+- 是一個專門用來建立物件的 function 
+- 利用 constructor 來初始設定物件
+- 利用 this 給予將要創造的 object 設定新的屬性、方法
+- 「需要確定這個東西跟 python 的 object factory 是否類似！！！」
+```JS
+function Shiba(name, color){;
+// 通常會在命名 constructor 的時候會採用 Pascal Case 的命名形式
+	this.name = name;
+	this.color = color;
+	
+	this.function = function(var){
+		// function code
+	};
+}
+
+new Shiba();
+```
 
 # 3. ES6: 變數宣告
 
