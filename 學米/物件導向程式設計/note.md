@@ -75,7 +75,7 @@ console.log(people.pickUp(cup) + people.drink(cup))
 - ### 匿名物件 (近似 Python 的 lambda function)
 ```Javascript
 var a = {
-  attribute: "something"; // 靜態屬性
+  attribute: "something", // 靜態屬性
   func_name = function(){ // 方法屬性
 	  //function code
   };
@@ -101,7 +101,7 @@ function Shiba(name, color){;
 	this.name = name;
 	this.color = color;
 	
-	this.function = function(var){
+	this.function = function(varName){
 		// function code
 	};
 }
