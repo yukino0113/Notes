@@ -110,10 +110,43 @@ new Shiba();
 ```
 
 # 3. ES6: 變數宣告
+推薦讀物： ES6 入門教程
+### var
+- 範圍為全域變數
+- 可以在宣告前先使用
 
+### let
+- 只能適用在 {} 當中 （局部變數）
+- 不能在宣告前先使用
+
+### const
+- 宣告之後就不可再更改
 
 # 4. ES6: 變數的解構賦值
+```JS
+var a = ["foo", "bar", "1", "2"];
+// 也可以放入 object 
+var a = {"foo":"bar", "aad":"123", "afs":"12553"};
+let [foo, bar, ...varName] = a; // ... : rest operator
+```
+等同於 Python 中的
+```python
+# python
+lst = [1, 2, 3, 4, 5]
+a, b, c* = lst
+```
+- 可以為 object 內的變數重新定義名稱
+```JS
+var {foo: new_foo, bar: new_bar, ...rest} = a;
+```
+- rest operator 也可以作為賦值使用
+```js
+var a = {"one": 1, "two": 2};
+var b = {"foo":123, "bar":"!23"};
 
+var c = (...a, ...b)
+var c = Object.assign(a, b)
+```
 
 # 5. ES6: 板模字串
 
