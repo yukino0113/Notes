@@ -133,7 +133,7 @@ let [foo, bar, ...varName] = a; // ... : rest operator
 ```python
 # python
 lst = [1, 2, 3, 4, 5]
-a, b, c* = lst
+a, b, *c = lst
 ```
 - 可以為 object 內的變數重新定義名稱
 ```JS
@@ -144,13 +144,45 @@ var {foo: new_foo, bar: new_bar, ...rest} = a;
 var a = {"one": 1, "two": 2};
 var b = {"foo":123, "bar":"!23"};
 
-var c = (...a, ...b)
+var c = {...a, ...b}
 var c = Object.assign(a, b)
 ```
 
 # 5. ES6: 板模字串
+- 使用 `` ，類似於 Python 的 fstring
+```JS
+console.log(`${dog} 跟 ${cat} 一起玩`);
+```
 
 
 # 6. ES6: Class 型別
+一種可以替代 constructor function 的語法糖
+使 constructor function 變為在 class 內，類似於 Python 的 __init__()
+```JS
+// constructor function 
+function Dog ({name: name, color:color}){
+    this.name = name;
+    this.color = color;
+}
 
-// TODO: LiveServer download
+// class
+class Cat {
+    constructor({name: name, color:color}){
+        this.name = name;
+    	this.color = color;
+	}
+}
+let cat = new Cat({name: "cat", color: "black"});
+```
+
+static 
+- 在宣告為靜態函數後，原 class 就無法再此使用函數 (class 級別的功能)
+```JS
+class Cat{
+    static calculate(a, b, ...c){
+        let result = a + b + c.reduce(function (pre, cur) {return pre + cur}, 0);
+        console.log(result);
+        return result
+	}
+}
+```
