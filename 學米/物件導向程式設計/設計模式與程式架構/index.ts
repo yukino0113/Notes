@@ -1,4 +1,5 @@
 interface ITest {
+  // interface 通常都會由 I 開頭命名
   test1: string;
   test2: number;
 
@@ -21,6 +22,6 @@ class Test implements ITest {
   };
 }
 
-const testIns = new Test("hollo world", 123);
+const testIns = new Test("hello world", 123);
 
 console.info(testIns.print(["3", " 3"]));
