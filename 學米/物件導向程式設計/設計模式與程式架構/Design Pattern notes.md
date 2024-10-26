@@ -192,5 +192,38 @@ class Comsumer {
   constructor(buffer: any[]) {
       this.buffer = buffer;
   }
+  
+  start = (){
+    setInterval(() => {
+      if (this.buffer.length === 0) return console.warn('Queue is empty');
+      const msg = this.buffer.shift();
+      console.log('Consumed:' + msg);
+    }, 1200);
+  };
 }
+
+const buffer_monitor = setInterval(() => {
+    console.log('Buffer size:', buffer.length);
+}, 500);
+
+const producer = new Producer(buffer);
+const consumer = new Consumer(buffer);
+
+producer.start();
+consumer.start();
+```
+
+# 轉接器模式
+  又稱為 Wrapper 模式，本質上是一個包裝器，用來將一個類別的介面轉換成另一個介面，讓原本不相容的類別可以一起工作
+  - 用來解決不同介面之間的不相容問題
+
+```Typescript
+import rem = CSS.rem;
+
+const returnValueWhatInput = (value: string) => value;
+
+const returnValueWhatInputAdapter = (value: number) => {
+  String.fromCharCode(returnValueWhatInput(value));
+}
+console.log(returnValueWhatInputAdapter(65));
 ```
