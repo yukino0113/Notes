@@ -149,3 +149,48 @@ subject.register(observer)
 subject.notify("text")
 subject.notify(JSON.stringify({foo:"bar"}))
 ```
+
+
+# 生產者與消費者模式
+  - 生產者與消費者之間完全解耦合
+  - 在多線程實作依然容易實作
+
+### 實作案例:
+  - Message queue, RabbitMQ: 支持現在主流的程式語言: NodeJS, Go, java, C, C++, Python
+  - NodeJS 的 BullJob (Job Schedular) -> Redis (In memory storage service => 快、輕、小) -> Cache
+  - Python 的 Celery
+
+```Typescript
+const buffer = <any>[];
+const MAX_BUFFER = 10;
+
+class Producer {
+  private buffer: any[];
+
+  constructor(buffer: any[]) {
+    this.buffer = buffer;
+  }
+
+  random = String(~~(Math.random() * 1000)).padStart(3, "0");
+
+  start = () => {
+    setInterval(() => {
+      // 產生消息的緩衝區
+      if (this.buffer.length >= MAX_BUFFER)
+        return console.warn('Queue is full');
+
+      const msg = 'Text:' + this.random();
+      console.log('Generated:' + msg);
+      this.buffer.push(msg)
+    }, 1000);
+  }
+}
+
+class Comsumer {
+  private buffer: any[];
+
+  constructor(buffer: any[]) {
+      this.buffer = buffer;
+  }
+}
+```
